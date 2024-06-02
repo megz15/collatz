@@ -1,10 +1,12 @@
 <script lang="ts">
+    import { LineChart } from 'chartist'
+	import { onMount } from 'svelte'
 	import svelteLogo from './assets/svelte.svg'
 	import viteLogo from '/vite.svg'
-	import Counter from './lib/Counter.svelte'
 
 	let n:number
 	let collatz_sequence: number[] = []
+	let chart: LineChart;
 
     const collatz = () => {
 		collatz_sequence = [n]
@@ -14,7 +16,23 @@
 			collatz_sequence.push(n)
 		}
 		n = collatz_sequence[0]
+
+		chart.update({
+			labels: collatz_sequence.map((_, i) => i+1),
+			series: [collatz_sequence]
+		})
 	}
+
+	onMount(() => {
+		chart = new LineChart(
+			'#chart',
+			{
+				labels: [],
+				series: [[]]
+			}
+		)
+	})
+
 </script>
 
 <main>
@@ -31,6 +49,8 @@
 	<div class="card">
 		Numero: <input placeholder="Enter value" bind:value={n}> <button on:click={collatz}>Enter</button>
 	</div>
+
+	<div id="chart"></div>
 
 	<div class="card">
 		<table>
