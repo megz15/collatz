@@ -3,16 +3,17 @@
 	import viteLogo from '/vite.svg'
 	import Counter from './lib/Counter.svelte'
 
-	let n = 0
+	let n:number
+	let collatz_sequence: number[] = []
 
     const collatz = () => {
-		let collatz_sequence = [n]
+		collatz_sequence = [n]
 		while (n!=1) {			
 			if (n%2 == 0) n/=2
 			else n = (n*3)+1
 			collatz_sequence.push(n)
 		}
-		alert(collatz_sequence)
+		n = collatz_sequence[0]
 	}
 </script>
 
@@ -28,11 +29,22 @@
 	<h1>Collatz Conjecture</h1>
 
 	<div class="card">
-		<Counter/>
+		Numero: <input placeholder="Enter value" bind:value={n}> <button on:click={collatz}>Enter</button>
 	</div>
 
 	<div class="card">
-		Numero: <input placeholder="Enter value" bind:value={n}> <button on:click={collatz}>Enter</button>
+		<table>
+			<tr>
+				<th>n</th>
+				<th>x<sub>n</sub></th>
+			</tr>
+			{#each collatz_sequence as n,i}
+				<tr>
+					<td align="left">{i+1}</td>
+					<td align="right">{n}</td>
+				</tr>
+			{/each}
+		</table>
 	</div>
 
 	<div class="card">
