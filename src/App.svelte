@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
     import { Chart } from 'chart.js/auto';
+	import collatz_img from './assets/collatz.svg';
 
 	let n:number
 	let collatz_sequence: number[] = []
@@ -70,6 +71,8 @@
 
 <main>
 	<h1>Collatz Conjecture</h1>
+	<img src={collatz_img} style="filter: invert(0.75);" />
+	<!-- <p><a href="https://en.wikipedia.org/wiki/Collatz_conjecture">Read More</a></p> -->
 
 	<div class="card">
 		<input placeholder="Value" bind:value={n} size="10"> <button on:click={calculate}>Enter</button>
