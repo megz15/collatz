@@ -43,15 +43,21 @@
 			x: {
 				beginAtZero: true,
 				title: {
-				display: true,
-				text: 'Index'
+					display: true,
+					text: 'Index',
+					color: "#fff"
+				}, ticks: {
+					color: "#fff"
 				}
 			},
 			y: {
 				beginAtZero: true,
 				title: {
-				display: true,
-				text: 'Value'
+					display: true,
+					text: 'Value',
+					color: "#fff"
+				}, ticks: {
+					color: "#fff"
 				}
 			}
 			}
@@ -71,7 +77,7 @@
 
 <main>
 	<h1>Collatz Conjecture</h1>
-	<img src={collatz_img} style="filter: invert(0.75);" />
+	<img src={collatz_img} style="filter: invert(1);" />
 	<!-- <p><a href="https://en.wikipedia.org/wiki/Collatz_conjecture">Read More</a></p> -->
 
 	<div class="card">
@@ -83,7 +89,7 @@
 	</div>
 
 	<div class="card">
-		<table>
+		<table align="center">
 			<tr>
 				<th>n</th>
 				<th>x<sub>n</sub></th>
